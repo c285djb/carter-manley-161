@@ -1,0 +1,26 @@
+[
+    {
+      "question": "Which food item is superior?",
+      "choice1": "Pizza",
+      "choice2": "A Hamburger",
+      "choice3": "Cake",
+      "choice4": "A Taco",
+      "answer": 1
+    },
+    {
+      "question": "What is the correct temperature to achieve the most delicious crispy crust?",
+      "choice1": "800F",
+      "choice2": "32F",
+      "choice3": "425F",
+      "choice4": "200F",
+      "answer": 3
+    },
+    {
+      "question": "Which of the following toppings are acceptable",
+      "choice1": "Sausage",
+      "choice2": "Pepperoni",
+      "choice3": "Pineapple",
+      "choice4": "All of the above",
+      "answer": 4
+    }
+  ]
