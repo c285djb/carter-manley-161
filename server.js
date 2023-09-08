@@ -1,9 +1,12 @@
 import express from 'express';
+import connectDatabase from './config/db';
 
 const app = express();
+
+connectDatabase();
 
 app.get('/', (req, res) =>
     res.send('http get request sent to root api endpont')
 );
 
-app.listen(3000, () => console.log ('Express server running on port 3000'));
+app.listen(4000, () => console.log ('Express server running on port 4000'));
