@@ -1,4 +1,4 @@
 {
     "mongoURI": "mongodb+srv://carman1578:SecurePass928374@itdev161-manley.1yrj9ty.mongodb.net/?retryWrites=true&w=majority",
-    "jwtSecret": "ayyfugeddaboudit"
+    "jwtSecret": "45"
 }
