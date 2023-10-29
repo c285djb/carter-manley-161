@@ -1,15 +1,19 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import { useHistory } from 'react-router-dom';
 
-const Register = () => {
+const Register = ({ authenticateUser }) => {
+    let history = useHistory();
     const [userData, setUserData] = useState({
         name: '',
         email: '',
         password: '',
         passwordConfirm: ''
     });
+    const [errorData, setErrorData] = useState({ errors: null});
 
     const {name, email, password, passwordConfirm} = userData;
+    const { errors } = errorData;
 
     const onChange = e => {
         const { name, value } = e.target;
@@ -40,11 +44,21 @@ const Register = () => {
 
                 const body = JSON.stringify(newUser);
                 const res =  await axios.post('http://localhost:5000/api/users', body, config);
-                console.log(res.data);
+
+                localStorage.setItem('token',res.data.token);
+                history.push('/');
+            
             }catch (error){
-                console.error(error.response.data);
-                return;
+                
+                localStorage.removeItem('token');
+
+                setErrorData({
+                    ...errors,
+                    errors: error.response.data.errors
+                })
             }
+
+            authenticateUser();
         }
     }
 
@@ -85,6 +99,10 @@ const Register = () => {
             </div>
             <div>
                 <button onClick={() => register()}>Register</button>
+            </div>
+            <div>
+                {errors && errors.map(error =>
+                    <div key={error.msg}>{error.msg}</div>)}
             </div>
         </div>
     )
