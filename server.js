@@ -213,6 +213,22 @@ app.get('/api/posts', auth, async (req, res) => {
 });
 
 
+app.get('/api/posts/:id', auth, async (req, res) => {
+    try {
+        const post =  await Post.findById(req.params.id);
+
+       if(!post){
+        return res.status(404).json({ msg: 'Post not found'});
+       }
+       
+    
+        res.json(post);
+    } catch (error) {
+        console.error(error)
+        res.status(500).send('Server error')
+    }
+});
+
 
 const port = 5000;
 app.listen(port, () => console.log (`Express server running on port ${port}`));
